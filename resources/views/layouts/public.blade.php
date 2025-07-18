@@ -15,8 +15,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
 
+    {{-- google icons --}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body class="font-sans antialiased overflow-x-hidden customGradient">
@@ -27,6 +36,7 @@
         <main>
             {{ $slot }}
         </main>
+        @include('components.footer')
 </body>
 
 </html>

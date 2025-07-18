@@ -1,14 +1,14 @@
-<nav class="flex flex-row items-center justify-between px-16 pt-10 sticky top-0">
+<nav class="flex flex-row items-center justify-between px-16 pt-10 fixed top-0 left-0 w-full z-50">
     <div class="flex flex-row justify-start gap-x-3 items-center">
         <a href="/">
             <img src="{{ asset('assets/AceLogo.png') }}" alt="Ace Web Design Logo" class="w-16">
         </a>
-        <a href="/" class="text-2xl">
+        <a href="/" class="text-2xl filter invert bg-white text-black">
             <span class="font-bold jura-700">AceWeb</span><span class="jura-300">_Design</span>
         </a>
     </div>
     <div>
-        <button
+        <button id="menuButton"
             class="flex flex-row items-center gap-x-2 bg-[#f4f4f4] text-black px-4 py-2 rounded-full hover:bg-brand-blue transition-colors duration-300 shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
             onclick="document.getElementById('navMenu').classList.toggle('-right-96'); document.getElementById('navMenu').classList.toggle('right-0')">
             <p class="jura-500 text-black">Menu</p>
@@ -16,7 +16,7 @@
 
         </button>
         <div id="navMenu"
-            class="absolute -right-96 mt-4 mr-16 pr-6 pl-16 py-2 rounded-md bg-white overflow-hidden h-fit transition-all duration-300 ease-in-out ">
+            class="absolute -right-96 mt-4 mr-16 pr-6 pl-16 py-2 rounded-md bg-white overflow-hidden h-fit transition-all duration-300 ease-in-out shadow-md ">
             <div class="flex flex-col items-end justify-end h-full">
                 <a href="/"
                     class="text-black text-xl mb-4 hover:text-brand-orange hover:mr-3 transition-all duration-300">Home</a>
@@ -34,3 +34,31 @@
         </div>
     </div>
 </nav>
+<script>
+// mouse click away event to hide the menu
+document.addEventListener('click', function(event) {
+    const menuButton = document.getElementById('menuButton');
+    const navMenu = document.getElementById('navMenu');
+    if (!menuButton.contains(event.target) && !navMenu.contains(event.target)) {
+        navMenu.classList.add('-right-96');
+        navMenu.classList.remove('right-0');
+    }
+});
+// close the menu when the escape key is pressed
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.add('-right-96');
+        navMenu.classList.remove('right-0');
+    }
+});
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+</script>
