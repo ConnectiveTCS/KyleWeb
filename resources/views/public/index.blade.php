@@ -31,12 +31,12 @@
                         class="w-full h-auto max-w-md rounded-lg">
                 </div>
             </div>
-            <div class=" text-lg absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center text-gray-400 hover:text-brand-orange transi duration-1000">
+            <div class=" text-lg absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center text-gray-400 hover:text-brand-orange transi duration-1000 group">
                 <a href="/#portfolio" behavior="smooth">
                     Skip to Portfolio
                     </a>
                     <a href="/#portfolio">
-                <span class="material-icons text-3xl -mt-2">
+                <span class="material-icons text-3xl -mt-2 group-hover:motion-reduce:animate-bounce duration-700">
                     keyboard_arrow_down
                 </span>
                 </a>
@@ -64,7 +64,7 @@
         </div>
         <div class="col-start-5 col-span-3">
             <img src="{{ asset('assets/kyle1.jpg') }}" alt="About Us Image"
-                class="w-full h-auto rounded-lg col-start-5 col-span-3">
+                class="w-full h-auto rounded-lg col-start-5 col-span-3 shadow-lg will-change-scroll">
         </div>
     </section>
     {{-- portfolio section --}}
