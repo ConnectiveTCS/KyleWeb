@@ -142,27 +142,6 @@
                     <p class="text-gray-600">Brief description of the project.</p>
 
                 </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/4.jpg') }}" alt="Portfolio Item 2"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 2</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/2.jpg') }}" alt="Portfolio Item 3"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 3</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border-black">
-                    <img src="{{ asset('assets/3.jpg') }}" alt="Portfolio Item 4"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 4</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
             </div>
             <div id="brandingGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-8 hidden">
                 <div
@@ -181,13 +160,6 @@
                     <p class="text-gray-600">Brief description of the project.</p>
                 </div>
                 <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/2.jpg') }}" alt="Portfolio Item 3"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 3</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
                     class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border-black">
                     <img src="{{ asset('assets/3.jpg') }}" alt="Portfolio Item 4"
                         class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
@@ -203,27 +175,6 @@
                     <h3 class="text-xl font-bold jura-500">Project Title 1</h3>
                     <p class="text-gray-600">Brief description of the project.</p>
 
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/4.jpg') }}" alt="Portfolio Item 2"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 2</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/2.jpg') }}" alt="Portfolio Item 3"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 3</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border-black">
-                    <img src="{{ asset('assets/3.jpg') }}" alt="Portfolio Item 4"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 4</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
                 </div>
             </div>
         </div>

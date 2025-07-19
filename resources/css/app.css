@@ -37,13 +37,13 @@
 .customGradient {
     background: linear-gradient(
             135deg,
-            hsla(236.6, 0%, 53.52%, 1) 0,
-            hsla(236.6, 0%, 53.52%, 0) 70%
+            rgb(221, 219, 219) 0,
+            hsla(16, 100%, 50%, 0.829) 70%
         ),
         linear-gradient(
             25deg,
             hsla(220.75, 34.93%, 26.52%, 1) 10%,
-            hsla(220.75, 34.93%, 26.52%, 0) 80%
+            hsla(221, 72%, 42%, 0) 80%
         ),
         linear-gradient(
             315deg,

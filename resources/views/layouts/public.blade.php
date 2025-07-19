@@ -33,7 +33,7 @@
     </style>
 </head>
 
-<body class="font-sans antialiased overflow-x-hidden customGradient">
+<body class="font-sans antialiased overflow-x-hidden customGradiednt bg-black">
     <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-white opacity-20 -z-10"></div>
 
     </div>
