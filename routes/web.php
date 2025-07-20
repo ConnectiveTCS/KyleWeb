@@ -12,6 +12,9 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('public.about.index');
 })->name('about');
+Route::get('/services', function () {
+    return view('public.services.index');
+})->name('services');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

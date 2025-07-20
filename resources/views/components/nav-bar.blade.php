@@ -1,4 +1,4 @@
-<nav class="flex flex-row items-center justify-between px-16 pt-10 fixed top-0 left-0 w-full z-50">
+<nav class="flex flex-row items-center justify-between px-16 pt-10 fixed top-0 left-0 w-full z-[100]">
     <div class="flex flex-row justify-start gap-x-3 items-center">
         <a href="/">
             <img src="{{ asset('assets/AceLogo.png') }}" alt="Ace Web Design Logo" class="w-16">

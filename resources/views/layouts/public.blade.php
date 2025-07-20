@@ -31,6 +31,9 @@
 
         
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
 </head>
 
 <body class="font-sans antialiased overflow-x-hidden customGradiednt bg-black">

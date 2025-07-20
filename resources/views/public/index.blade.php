@@ -1,6 +1,6 @@
 <x-public-layout>
     <section class="h-screen p-6 mt-28">
-        <div class="bg-slate-100 h-full rounded-3xl backdrop:blur-xl bg shadow-inner shadow-black">
+        <div class="bg-slate-100 h-full rounded-3xl backdrop:blur-xl bg shadow-inner shadow-black z-50 relative">
             <div class=" grid grid-cols-2 place-items-center h-full py-4 px-16">
                 <div class="col-span-1 text-left">
                     <h1 class=" text-8xl text-left mb-2 leading-[0.8] uppercase text-balance font-sans cursor-default">
@@ -31,21 +31,47 @@
                         class="w-full h-auto max-w-md rounded-lg">
                 </div>
             </div>
-            <div class=" text-lg absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center text-gray-400 hover:text-brand-orange transi duration-1000 group">
+            <div
+                class=" text-lg absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center text-gray-400 hover:text-brand-orange transi duration-1000 group">
                 <a href="/#portfolio" behavior="smooth">
                     Skip to Portfolio
-                    </a>
-                    <a href="/#portfolio">
-                <span class="material-icons text-3xl -mt-2 group-hover:motion-reduce:animate-bounce duration-700">
-                    keyboard_arrow_down
-                </span>
+                </a>
+                <a href="/#portfolio">
+                    <span class="material-icons text-3xl -mt-2 group-hover:motion-reduce:animate-bounce duration-700">
+                        keyboard_arrow_down
+                    </span>
                 </a>
             </div>
         </div>
+        <div id="ratings"
+            class=" overflow-hidden flex bg-white p-4 w-4/5 justify-self-center z-40 relative rounded-b-xl shadow-md -translate-y-[168px] transition-all duration-700">
+            <div class="flex gap-2">
+                <img src="{{ asset('assets/Kyle.png') }}" alt=""
+                    class="w-24 aspect-square h-24 rounded-full shadow-lg object-cover">
+                <div>
+                    <p>Next Delivery</p>
+                    <p class=" max-w-52 h-16 overflow-y-scroll">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate voluptate inventore illum
+                        vero
+                        animi aliquam, ipsam deserunt voluptates saepe velit! Nostrum quam cum sunt amet assumenda error
+                        similique quisquam laboriosam.</p>
+                    <div class="w-full p-2 rounded-full bg-gray-100 mt-2 items-center flex justify-between">
+                        {{-- stars --}}
+                        <span class="material-icons text-yellow-500 text-sm">star</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button
+            class=" z-50 hover:pt-6 bg-brand-blue text-white pt-3 pb-3 px-6 rounded-b-2xl left-40 relative shadow-[0_4px_6px_-1px_rgba(255,255,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] transition-all duration-700 -translate-y-[168px] rounded-t-sm"
+            onclick="document.getElementById('ratings').classList.toggle('-translate-y-[168px]'); document.getElementById('ratings').classList.toggle('translate-y-0'); this.classList.toggle('-translate-y-[168px]');this.classList.toggle('translate-y-0'); this.classList.toggle('bg-brand-orange'); this.classList.toggle('bg-brand-blue'); this.classList.toggle('text-white'); this.classList.toggle('text-black');">
+            Brag_Tab
+        </button>
     </section>
-    <section id="about" class=" px-16 grid grid-cols-7 mt-16">
+    <section id="about" class=" px-16 grid grid-cols-7 mt-16 z-10">
         <div class="col-span-4 col-start-1 rounded-3xl p-8 h-fit text-white sticky top-32">
-            <h2 class="text-4xl text-left font-sans mt-10  drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">Welcome to Ace Web Design</h2>
+            <h2 class="text-4xl text-left font-sans mt-10  drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">Welcome to Ace Web
+                Design</h2>
             <p class="text-xl jura-500 mt-4 text-justify drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
                 Founded in 2015 by a team of passionate digital craftsmen, Ace Web Design began with a simple vision: to
                 transform how businesses connect with their audiences online. What started as a small studio in a
@@ -75,27 +101,27 @@
                 <ul class="flex flex-row justify-center items-center gap-x-8 text-2xl jura-500 text-white py-4">
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                        onmouseover="document.getElementById('webDesignGrid').classList.remove('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
+                            onmouseover="document.getElementById('webDesignGrid').classList.remove('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
                             WEBDESIGN
                         </button>
                     </li>
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                        onmouseover="document.getElementById('developmentGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
+                            onmouseover="document.getElementById('developmentGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
                             DEVELOPMENT
                         </button>
 
                     </li>
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                        onmouseover="document.getElementById('brandingGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
+                            onmouseover="document.getElementById('brandingGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
                             BRANDING
                         </button>
 
                     </li>
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                        onmouseover="document.getElementById('seoGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden');">
+                            onmouseover="document.getElementById('seoGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden');">
                             SEO
                         </button>
 
