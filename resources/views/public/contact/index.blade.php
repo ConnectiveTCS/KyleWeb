@@ -14,7 +14,7 @@
             <div class="text-center col-span-1 flex-1">
                 <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
                 <p class="text-lg mb-8">We'd love to hear from you! Please fill out the form below to get in touch.</p>
-                <form action="/contact" method="POST" class="max-w-md mx-auto">
+                <form action="{{ route('contact.store') }}" method="POST" class="max-w-md mx-auto">
                     @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
