@@ -34,9 +34,9 @@ class ContactController extends Controller
             'status' => 'in:new,in_progress,resolved',
             'contacted_at' => 'nullable|date',
         ]);
-        Contact::create($request->all());
+        $contact = Contact::create($request->all());
         // Optionally send an email notification
-        Mail::to('sales@acewebdesign.co.za')->send(new \App\Mail\Contact());
+        Mail::to('sales@acewebdesign.co.za')->send(new \App\Mail\Contact($contact));
         return redirect()->route('dashboard')->with('success', 'Contact created successfully.');
     }
 

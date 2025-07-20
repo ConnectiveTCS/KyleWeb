@@ -20,6 +20,7 @@
                                 <th class="px-4 py-2">Email</th>
                                 <th class="px-4 py-2">Phone</th>
                                 <th class="px-4 py-2">Message</th>
+                                <th class="px-4 py-2">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white">
@@ -30,12 +31,26 @@
                                     <td class="border px-4 py-2">{{ $contact->email }}</td>
                                     <td class="border px-4 py-2">{{ $contact->phone }}</td>
                                     <td class="border px-4 py-2">{{ $contact->message }}</td>
+                                    <td class="px-4 py-2 flex flex-col justify-center items-start">
+                                        {{-- Action buttons --}}
+                                        <a href="{{ route('contact.show', $contact->id) }}"
+                                            class="text-blue-500 hover:underline text-center">View</a>
+                                        <a href="{{ route('contact.edit', $contact->id) }}"
+                                            class="text-yellow-500 hover:underline text-center">Edit</a>
+                                        <form action="{{ route('contact.destroy', $contact->id) }}" method="POST"
+                                            class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="text-red-500 hover:underline text-center">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                             {{-- If no contacts, show a message --}}
                             @if ($contacts->isEmpty())
                                 <tr>
-                                    <td colspan="4" class="text-center px-4 py-2">No submissions found.</td>
+                                    <td colspan="5" class="text-center px-4 py-2">No submissions found.</td>
                                 </tr>
                             @endif
                         </tbody>
