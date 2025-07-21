@@ -66,7 +66,7 @@
         </div>
         <div id="ticker-track" class="flex gap-8 animate-ticker group-hover:pause select-none">
             @foreach ($ratings as $rating)
-                <div class="flex gap-2 flex-1 min-w-96 h-full">
+                <div class="flex gap-2 flex-1 min-w-96 h-full awe">
                     <div class="w-full flex flex-col justify-between">
                         <div class="flex items-center gap-2">
                             <img src="{{ asset('storage/' . $rating->client_photo) }}" alt=""
