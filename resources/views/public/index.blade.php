@@ -61,7 +61,7 @@
                 pointer-events: none;
             }
         </style>
-        <div class="absolute inset-0 z-10 gradient-overlay">
+        <div class="absolute inset-0 z-10 gradient-overlay awe">
 
         </div>
         <div id="ticker-track" class="flex gap-8 animate-ticker group-hover:pause select-none">
