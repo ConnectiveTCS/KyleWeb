@@ -11,20 +11,19 @@ class Project extends Model
     use HasFactory;
     protected $fillable = [
         'client_name',
+        'project_photos',
+        'client_logo',
         'description',
         'status',
         'start_date',
         'end_date',
-        'client_photo',
-        'client_logo',
         'client_website',
-        'client_email',
-        'client_phone',
         'project_type',
     ];
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
+        'project_photos' => 'array',
     ];
     
 }

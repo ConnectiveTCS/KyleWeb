@@ -101,27 +101,27 @@
                 <ul class="flex flex-row justify-center items-center gap-x-8 text-2xl jura-500 text-white py-4">
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                            onmouseover="document.getElementById('webDesignGrid').classList.remove('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
+                            onclick="document.getElementById('webDesignGrid').classList.remove('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
                             WEBDESIGN
                         </button>
                     </li>
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                            onmouseover="document.getElementById('developmentGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
+                            onclick="document.getElementById('developmentGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
                             DEVELOPMENT
                         </button>
 
                     </li>
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                            onmouseover="document.getElementById('brandingGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
+                            onclick="document.getElementById('brandingGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('seoGrid').classList.add('hidden');">
                             BRANDING
                         </button>
 
                     </li>
                     <li>
                         <button class="hover:text-brand-blue hover:font-bold transition-all duration-300"
-                            onmouseover="document.getElementById('seoGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden');">
+                            onclick="document.getElementById('seoGrid').classList.remove('hidden'); document.getElementById('webDesignGrid').classList.add('hidden'); document.getElementById('developmentGrid').classList.add('hidden'); document.getElementById('brandingGrid').classList.add('hidden');">
                             SEO
                         </button>
 
@@ -129,79 +129,66 @@
                 </ul>
             </div>
             <div id="webDesignGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-8">
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 1</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/4.jpg') }}" alt="Portfolio Item 2"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 2</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/2.jpg') }}" alt="Portfolio Item 3"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 3</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border-black">
-                    <img src="{{ asset('assets/3.jpg') }}" alt="Portfolio Item 4"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 4</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
+                @foreach ($projects as $project)
+                    @if ($project->project_type === 'Web Design')
+                    <a href="{{ route('public.projects.show', $project) }}">
+                        <div
+                            class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
+                            <img src="{{ asset('storage/' . $project->project_photos[1]) }}" alt="Portfolio Item 1"
+                                class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
+                            <div class="grid grid-cols-3 items-center gap-4">
+                                <div class="col-span-1 col-start-2">
+                                    <h3 class="text-xl font-bold jura-500">{{ $project->client_name }}</h3>
+                                    <p class="text-gray-600">{{ $project->description }}</p>
+                                </div>
+                                <span class="material-icons text-black col-span-1 col-start-3 place-self-end">open_in_new</span>
+                            </div>
+                        </div>
+                        </a>
+                    @endif
+                @endforeach
             </div>
             <div id="developmentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-8 hidden">
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 1</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
+                @foreach ($projects as $project)
+                    @if ($project->project_type === 'Web App Development')
+                        <div
+                            class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
+                            <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
+                                class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
+                            <h3 class="text-xl font-bold jura-500">{{ $project->client_name }}</h3>
+                            <p class="text-gray-600">{{ $project->description }}</p>
 
-                </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
             <div id="brandingGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-8 hidden">
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 1</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
+                @foreach ($projects as $project)
+                    @if ($project->project_type === 'Branding')
+                        <div
+                            class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
+                            <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
+                                class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
+                            <h3 class="text-xl font-bold jura-500">{{ $project->client_name }}</h3>
+                            <p class="text-gray-600">{{ $project->description }}</p>
 
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/4.jpg') }}" alt="Portfolio Item 2"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 2</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border-black">
-                    <img src="{{ asset('assets/3.jpg') }}" alt="Portfolio Item 4"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 4</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
-                </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
             <div id="seoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-8 hidden">
-                <div
-                    class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                    <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
-                        class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                    <h3 class="text-xl font-bold jura-500">Project Title 1</h3>
-                    <p class="text-gray-600">Brief description of the project.</p>
+                @foreach ($projects as $project)
+                    @if ($project->project_type === 'SEO')
+                        <div
+                            class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
+                            <img src="{{ asset('assets/1.jpg') }}" alt="Portfolio Item 1"
+                                class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
+                            <h3 class="text-xl font-bold jura-500">{{ $project->client_name }}</h3>
+                            <p class="text-gray-600">{{ $project->description }}</p>
 
-                </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>

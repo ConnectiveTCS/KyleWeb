@@ -15,12 +15,12 @@ class RatingController extends Controller
     {
         // Logic to retrieve and display all ratings
         $ratings = Rating::all();
-        return view('ratings.index', compact('ratings'));
+        return view('admin.ratings.index', compact('ratings'));
     }
     public function create()
     {
         // Logic to show the form for creating a new rating
-        return view('ratings.create');
+        return view('admin.ratings.create');
     }
     public function store(Request $request)
     {
@@ -55,13 +55,13 @@ class RatingController extends Controller
     {
         // Logic to retrieve and display a specific rating
         $rating = Rating::findOrFail($id);
-        return view('ratings.show', compact('rating'));
+        return view('admin.ratings.show', compact('rating'));
     }
     public function edit($id)
     {
         // Logic to show the form for editing a specific rating
         $rating = Rating::findOrFail($id);
-        return view('ratings.edit', compact('rating'));
+        return view('admin.ratings.edit', compact('rating'));
     }
     public function update(Request $request, $id)
     {
