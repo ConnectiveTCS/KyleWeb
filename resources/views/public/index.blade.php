@@ -43,31 +43,73 @@
                 </a>
             </div>
         </div>
-        <div id="ratings"
-            class=" overflow-hidden flex bg-white p-4 w-4/5 justify-self-center z-40 relative rounded-b-xl shadow-md -translate-y-[168px] transition-all duration-700">
-            <div class="flex gap-2">
-                <img src="{{ asset('assets/Kyle.png') }}" alt=""
-                    class="w-24 aspect-square h-24 rounded-full shadow-lg object-cover">
-                <div>
-                    <p>Next Delivery</p>
-                    <p class=" max-w-52 h-16 overflow-y-scroll">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate voluptate inventore illum
-                        vero
-                        animi aliquam, ipsam deserunt voluptates saepe velit! Nostrum quam cum sunt amet assumenda error
-                        similique quisquam laboriosam.</p>
-                    <div class="w-full p-2 rounded-full bg-gray-100 mt-2 items-center flex justify-between">
-                        {{-- stars --}}
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
+    </section>
+    <div id="ratings"
+        class="relative h-80 p-8 overflow-hidden items-center flex bg-white w-4/5 justify-self-center z-40 rounded-xl shadow-md group cursor-grab">
+        {{-- overlay ontop of ratings div --}}
+        <style>
+            .gradient-overlay {
+                position: absolute;
+                inset: 0;
+                z-index: 10;
+                /* white - transparent - white gradient */
+                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                /* make it cover the entire div */
+                background-size: contain;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+        </style>
+        <div class="absolute inset-0 z-10 gradient-overlay">
+
+        </div>
+        <div id="ticker-track" class="flex gap-8 animate-ticker group-hover:pause select-none">
+            @foreach ($ratings as $rating)
+                <div class="flex gap-2 flex-1 min-w-96 h-full">
+                    <div class="w-full flex flex-col justify-between">
+                        <div class="flex items-center gap-2">
+                            <img src="{{ asset('storage/' . $rating->client_photo) }}" alt=""
+                                class="w-14 h-14 aspect-square rounded-full shadow-lg object-scale-down">
+                            <p>{{ $rating->client_name }} <span class="text-gray-500">|
+                                    {{ $rating->business_name }}</span></p>
+                        </div>
+                        <p class="">
+                            {{ $rating->comment }}
+                        </p>
+                        <div class="w-full py-2 px-32 rounded-full bg-gray-100 mt-2 items-center flex justify-between">
+                            {{-- stars - generate correct number of stars based on integer rating --}}
+                            @for ($i = 1; $i <= $rating->rating; $i++)
+                                <span class="material-icons text-yellow-500 text-sm">star</span>
+                            @endfor
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
+            {{-- duplicate for seamless animation --}}
+            @foreach ($ratings as $rating)
+                <div class="flex gap-2 flex-1 min-w-96 h-full">
+                    <div class="w-full flex flex-col justify-between">
+                        <div class="flex items-center gap-2">
+                            <img src="{{ asset('storage/' . $rating->client_photo) }}" alt=""
+                                class="w-14 h-14 aspect-square rounded-full shadow-lg object-scale-down">
+                            <p>{{ $rating->client_name }} <span class="text-gray-500">|
+                                    {{ $rating->business_name }}</span></p>
+                        </div>
+                        <p class="">
+                            {{ $rating->comment }}
+                        </p>
+                        <div class="w-full py-2 px-32 rounded-full bg-gray-100 mt-2 items-center flex justify-between">
+                            {{-- stars - generate correct number of stars based on integer rating --}}
+                            @for ($i = 1; $i <= $rating->rating; $i++)
+                                <span class="material-icons text-yellow-500 text-sm">star</span>
+                            @endfor
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-        <button
-            class=" z-50 hover:pt-6 bg-brand-blue text-white pt-3 pb-3 px-6 rounded-b-2xl left-40 relative shadow-[0_4px_6px_-1px_rgba(255,255,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] transition-all duration-700 -translate-y-[168px] rounded-t-sm"
-            onclick="document.getElementById('ratings').classList.toggle('-translate-y-[168px]'); document.getElementById('ratings').classList.toggle('translate-y-0'); this.classList.toggle('-translate-y-[168px]');this.classList.toggle('translate-y-0'); this.classList.toggle('bg-brand-orange'); this.classList.toggle('bg-brand-blue'); this.classList.toggle('text-white'); this.classList.toggle('text-black');">
-            Brag_Tab
-        </button>
-    </section>
+    </div>
     <section id="about" class=" px-16 grid grid-cols-7 mt-16 z-10">
         <div class="col-span-4 col-start-1 rounded-3xl p-8 h-fit text-white sticky top-32">
             <h2 class="text-4xl text-left font-sans mt-10  drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">Welcome to Ace Web
@@ -131,19 +173,20 @@
             <div id="webDesignGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-8">
                 @foreach ($projects as $project)
                     @if ($project->project_type === 'Web Design')
-                    <a href="{{ route('public.projects.show', $project) }}">
-                        <div
-                            class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
-                            <img src="{{ asset('storage/' . $project->project_photos[1]) }}" alt="Portfolio Item 1"
-                                class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
-                            <div class="grid grid-cols-3 items-center gap-4">
-                                <div class="col-span-1 col-start-2">
-                                    <h3 class="text-xl font-bold jura-500">{{ $project->client_name }}</h3>
-                                    <p class="text-gray-600">{{ $project->description }}</p>
+                        <a href="{{ route('public.projects.show', $project) }}">
+                            <div
+                                class="bg-white p-4 hover:shadow-lg hover:rounded-xl transition-all duration-[1000ms] shadow-black hover:scale-105 hover:border">
+                                <img src="{{ asset('storage/' . $project->project_photos[1]) }}" alt="Portfolio Item 1"
+                                    class="w-full h-60 rounded-lg mb-4 object-cover object-top hover:object-bottom transition-all duration-[1500ms]">
+                                <div class="grid grid-cols-3 items-center gap-4">
+                                    <div class="col-span-1 col-start-2">
+                                        <h3 class="text-xl font-bold jura-500">{{ $project->client_name }}</h3>
+                                        <p class="text-gray-600">{{ $project->description }}</p>
+                                    </div>
+                                    <span
+                                        class="material-icons text-black col-span-1 col-start-3 place-self-end">open_in_new</span>
                                 </div>
-                                <span class="material-icons text-black col-span-1 col-start-3 place-self-end">open_in_new</span>
                             </div>
-                        </div>
                         </a>
                     @endif
                 @endforeach
@@ -192,4 +235,66 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('ratings');
+            const track = document.getElementById('ticker-track');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('cursor-grabbing');
+                slider.classList.remove('cursor-grab');
+                track.style.animationPlayState = 'paused';
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                if (!isDown) return;
+                isDown = false;
+                slider.classList.remove('cursor-grabbing');
+                slider.classList.add('cursor-grab');
+                track.style.animationPlayState = 'running';
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('cursor-grabbing');
+                slider.classList.add('cursor-grab');
+                track.style.animationPlayState = 'running';
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; //scroll-fast
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+
+    <style>
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-ticker {
+            animation: ticker 60s linear infinite;
+        }
+
+        .group:hover .group-hover\:pause {
+            animation-play-state: paused;
+        }
+    </style>
 </x-public-layout>

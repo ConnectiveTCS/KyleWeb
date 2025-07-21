@@ -36,7 +36,7 @@
                                 <tr>
                                     <td class="border px-4 py-2">
                                         <img src="{{ asset('storage/' . $rating->client_photo) }}" alt="Project Logo"
-                                            class="h-10 w-10 rounded-full">
+                                            class="h-16 w-16 object-contain">
                                     </td>
                                     <td class="border px-4 py-2">{{ $rating->project_name }}</td>
                                     <td class="border px-4 py-2">{{ $rating->client_name }}</td>

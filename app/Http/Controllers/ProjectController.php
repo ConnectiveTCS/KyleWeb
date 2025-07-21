@@ -76,7 +76,7 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         // Logic to validate and update an existing project
-        $validated = $request->validate([
+        $request->validate([
             'client_name' => 'required|string|max:255',
             'project_photos.*' => 'nullable|file|image|max:2048',
             'client_logo' => 'nullable|file|image|max:2048',

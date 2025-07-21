@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Log;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class RatingController extends Controller
 {
@@ -30,20 +31,22 @@ class RatingController extends Controller
             'project_id' => 'required|exists:projects,id',
             'client_name' => 'nullable|string|max:255',
             'business_name' => 'nullable|string|max:255',
-            'client_photo' => 'nullable|image|max:2048',
-            'business_photo' => 'nullable|image|max:2048',
+            'client_photo' => 'nullable|file|image|max:2048',
+            'business_photo' => 'nullable|file|image|max:2048',
             'project_name' => 'nullable|string|max:255',
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'nullable|string|max:1000',
         ]);
         // Handle file uploads for client_photo and business_photo
         if ($request->hasFile('client_photo')) {
-            $clientPhotoPath = $request->file('client_photo')->store('photos', 'public');
-            $request->merge(['client_photo' => $clientPhotoPath]);
+            $path = $request->file('client_photo')->store('photos', 'public');
+            $data['client_photo'] = $path;
+            Log::info('Client photo stored at: ' . $path);
         }
         if ($request->hasFile('business_photo')) {
-            $businessPhotoPath = $request->file('business_photo')->store('photos', 'public');
-            $request->merge(['business_photo' => $businessPhotoPath]);
+            $path2 = $request->file('business_photo')->store('photos', 'public');
+            $data['business_photo'] = $path2;
+            Log::info('Business photo stored at: ' . $path2);
         }
         // Create the rating
         $rating = Rating::create($request->all());
@@ -71,24 +74,37 @@ class RatingController extends Controller
             'project_id' => 'required|exists:projects,id',
             'client_name' => 'nullable|string|max:255',
             'business_name' => 'nullable|string|max:255',
-            'client_photo' => 'nullable|image|max:2048',
-            'business_photo' => 'nullable|image|max:2048',
+            'client_photo' => 'nullable|file|image|max:2048',
+            'business_photo' => 'nullable|file|image|max:2048',
             'project_name' => 'nullable|string|max:255',
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'nullable|string|max:1000',
         ]);
-        // Handle file uploads for client_photo and business_photo
-        if ($request->hasFile('client_photo')) {
-            $clientPhotoPath = $request->file('client_photo')->store('photos', 'public');
-            $request->merge(['client_photo' => $clientPhotoPath]);
-        }
-        if ($request->hasFile('business_photo')) {
-            $businessPhotoPath = $request->file('business_photo')->store('photos', 'public');
-            $request->merge(['business_photo' => $businessPhotoPath]);
-        }
         // Update the rating
         $rating = Rating::findOrFail($id);
-        $rating->update($request->all());
+        $data = $request->except(['client_photo', 'business_photo']);
+        // Handle client logo upload
+        if ($request->hasFile('client_photo')) {
+            // Delete old logo if exists
+            if ($rating->client_photo) {
+                Storage::disk('public')->delete($rating->client_photo);
+            }
+
+            $path = $request->file('client_photo')->store('logos', 'public');
+            $data['client_photo'] = $path;
+            Log::info('Client photo updated at: ' . $path);
+        }
+        if ($request->hasFile('business_photo')) {
+            // Delete old logo if exists
+            if ($rating->business_photo) {
+                Storage::disk('public')->delete($rating->business_photo);
+            }
+
+            $path = $request->file('business_photo')->store('logos', 'public');
+            $data['business_photo'] = $path;
+            Log::info('Business photo updated at: ' . $path);
+        }
+        $rating->update($data);
         // Optionally log the updated rating or perform additional actions
         Log::info('Rating updated:', $rating->toArray());
         return redirect()->route('ratings.index')->with('success', 'Rating updated successfully.');
